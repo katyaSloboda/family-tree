@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/css/style.css">
+  <title>Інформація про людину</title>
+</head>
+<body>
+  <% include blocks/header.ejs %>
+  <h1>Інформація про людину</h1>
+  <% for(var i = 0; i < links.length; i++) { %>
+    <div class="scraping-data">
+      <b><%= links[i].title %></b>
+      <p><%= links[i].link %></p>
+      <p><%= links[i].text %></p>
+    </div>
+    <br>
+  <% } %>
+</body>
+</html>

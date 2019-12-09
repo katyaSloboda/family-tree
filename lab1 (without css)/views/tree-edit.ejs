@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Редагування дерева</title>
+</head>
+<body bgcolor="#FFFFFE" link="#646267" text="#504D50" topmargin="0" leftmargin="0">
+  <% include blocks/header.ejs %>
+  <div align="center">
+    <br/>
+    <br/>
+    <h1><font size="6">Редагування родинного дерева</font></h1>
+    <br/>
+    <br/>
+    <form method="post" action="/edit-tree/<%= tree._id %>">
+      <div>
+        <label for="treeInput"><font size="5">Введіть нову назву для дерева:</font></label>
+        <input type="text" name="name" id="treeInput" placeholder="Іванови" value="<%= tree.name %>">
+      </div>
+      <br/>
+      <button type="submit"><font size="3" color="#646267">Зберегти</font></button>
+      <a href="/trees" role="button"><font size="4">Скасувати</font></a>
+    </form>
+  </div>
+</body>
+</html>

@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Член родини</title>
+</head>
+<body bgcolor="#FFFFFE" link="#646267" text="#504D50" topmargin="0" leftmargin="0">
+  <% include blocks/header.ejs %>
+  <h1 align="center"><font size="6">Редагування даних про члена родини</font></h1>
+  <form method="post" action="/edit-person/<%= person._id %>" align="left">
+    <input type="hidden" name="treeId" value="<%= person.treeId %>">
+    <font size="5">
+      <table cellspacing="4px" cellpadding="2px">
+        <!-- first name -->
+        <tr>
+          <td><label for="firstNameInput">Ім'я: </label></td>
+          <td><input type="text" name="firstName"id="firstNameInput" placeholder="Іван" value="<%= person.firstName %>"></td>
+        </tr>
+        <!-- last name -->
+        <tr>
+          <td><label for="lastNameInput">Прізвище: </label></td>
+          <td><input type="text" name="lastName" id="lastNameInput" placeholder="Іванов" value="<%= person.lastName %>"></td>
+        </tr>
+        <!-- middle name -->
+        <tr>
+          <td><label for="middleNameInput">По батькові: </label></td>
+          <td><input type="text" name="middleName" id="middleNameInput" placeholder="Іванович" value="<%= person.middleName %>"></td>
+        </tr>
+        <!-- date of birth -->
+        <tr>
+          <td><label for="dateOfBirthInput">Дата народження: </label></td>
+          <td><input type="date" name="dateOfBirth" id="dateOfBirthInput" value="<%= person.dateOfBirth %>"></td>
+        </tr>
+        <!-- date of death -->
+        <tr>
+          <td><label for="dateOfDeathInput">Дата смерті: </label></td>
+          <td><input type="date" name="dateOfDeath" id="dateOfDeathInput" value="<%= person.dateOfDeath %>"></td>
+        </tr>
+        <!-- gender -->
+        <tr>
+          <td><label for="genderSelect">Стать: </label></td>
+          <td><select data-style="btn-info" name="gender" id="genderSelect">
+            <optgroup>
+              <% if (!person.gender || person.gender == "0") { %>
+                <option value="0" selected>Чоловіча</option>
+                <option value="1">Жіноча</option>
+              <% } else { %>
+                <option value="0">Чоловіча</option>
+                <option value="1" selected>Жіноча</option>
+              <% } %>
+            </optgroup>
+          </select></td>
+        </tr>
+        <!-- mother -->
+        <tr>
+          <td><label for="motherSelect">Мати: </label></td>
+          <td><select data-style="btn-info" name="motherId" id="motherSelect">
+            <optgroup>
+              <% for(var i = 0; i < women.length; i++) { %>
+                <% if (person.motherId == women[i]._id) { %>
+                  <option value="<%= women[i]._id %>" selected><%= (women[i].firstName || '') + ' ' + (women[i].lastName || '') + ' ' + (women[i].middleName || '') + ' ' + (women[i].dateOfBirth || '') %></option>
+                <% } else { %>
+                  <option value="<%= women[i]._id %>"><%= (women[i].firstName || '') + ' ' + (women[i].lastName || '') + ' ' + (women[i].middleName || '') + ' ' + (women[i].dateOfBirth || '') %></option>
+                <% } %>
+              <% } %>
+            </optgroup>
+          </select></td>
+        </tr>
+        <!-- father -->
+        <tr>
+          <td><label for="fatherSelect">Батько: </label></td>
+          <td><select data-style="btn-info" name="fatherId" id="fatherSelect">
+            <optgroup>
+              <% for(var i = 0; i < men.length; i++) { %>
+                <% if (person.fatherId == men[i]._id) { %>
+                  <option value="<%= men[i]._id %>" selected><%= (men[i].firstName || '') + ' ' + (men[i].lastName || '') + ' ' + (men[i].middleName || '') + ' ' + (men[i].dateOfBirth || '') %></option>
+                <% } else { %>
+                  <option value="<%= men[i]._id %>"><%= (men[i].firstName || '') + ' ' + (men[i].lastName || '') + ' ' + (men[i].middleName || '') + ' ' + (men[i].dateOfBirth || '') %></option>
+                <% } %>
+              <% } %>
+            </optgroup>
+          </select></td>
+        </tr>
+      </table>
+      <br/>
+
+      <!-- buttons -->
+      <table cellspacing="10px" cellpadding="2px">
+        <tr>
+          <td>
+            <button type="submit"><font size="4" color="#646267">Зберегти</font></button>
+          </td>
+          <td bgcolor="#563D7C">
+            <a href="/tree/<%= person.treeId %>" role="button"><font size="4" color="FFFFFE">Скасувати</font></a>
+          </td>
+          <% if(person._id != 0) { %>
+            <td bgcolor="#563D7C">
+              <a href="/delete-person/<%= person._id %>/<%= person.treeId %>" role="button"><font size="4" color="FFFFFE">Видалити</font></a>
+            </td>
+          <% } %>
+        </tr>
+      </table>
+    </font>
+  </form>
+</body>
+</html>

@@ -1,0 +1,178 @@
+body {
+  background: #FFFFFE;
+  margin: 0px;
+  font-family: arial;
+}
+header {
+  text-align: right;
+  background: #563D7C;
+  height: 50px;
+  line-height: 50px;
+  padding-right: 10px;
+}
+header a {
+  color: #FFFFF0;
+  margin: 10px;
+  font-size: 1.2rem;
+}
+h1 {
+  color: #504D50;
+  font-size: 2.2rem;
+  text-align: center;
+  margin: 80px auto;
+}
+form {
+  color: #646267;
+  font-size: 1.3rem;
+  margin: 0px 30px;
+}
+input, select {
+  color: #646267;
+  font-size: 1.2rem;
+}
+input::placeholder {
+  color: #88646267;
+}
+a {
+  text-decoration: none;
+  color: #504D50;
+  font-size: 1.1rem;
+}
+.text-align--center {
+  text-align: center;
+}
+.margin-left--10px {
+  margin-left: 10px;
+}
+
+
+/* buttons */
+button:hover {
+  cursor: pointer;
+}
+.btn {
+  color: #FFFFFE;
+  background: #563D7C;
+  border: 0px solid #D0D0D0;
+  width: 130px;
+  height: 32px;
+  text-align: center;
+  font-size: 1.1rem;
+}
+.btn--big {
+  height: 40px;
+  padding: 0px 4px;
+  margin: -10px 18px 10px 18px;
+}
+.btn-div {
+  display: inline-block;
+  line-height: 32px;
+}
+.btn-div--big {
+  display: inline-block;
+  line-height: 40px;
+}
+.btn-info {
+  width: 210px;
+}
+
+
+/* index page (creating tree) */
+.create-tree__img-box {
+  height: 574px;
+  margin: 0px;
+}
+.create-tree__img {
+  width: 100%;
+  height: 100%;
+}
+.create-tree__box {
+  margin-top: -574px;
+}
+.create-tree__title {
+  font-size: 2.9rem;
+  color: #FEFEFE;
+}
+.create-tree__form {
+  color: #FEFEFE;
+  font-size: 2rem;
+  padding-top: 100px;
+}
+.create-tree__form button {
+  font-size: 1.6rem;
+  margin-top: 50px;
+  width: 160px;
+  height: 70px;
+}
+
+
+/* person page */
+.person-form__box {
+  display: inline-block;
+  padding-right: 40px;
+}
+.box__person-prop-box {
+  display: table-row;
+}
+.person-prop-box__label,
+.person-prop-box__input,
+.person-prop-box__select {
+  display: table-cell;
+  margin-bottom: 6px;
+}
+.person-form__btn-box {
+  margin: 40px 0px 10px 0px;
+}
+
+
+/* trees page */
+.trees__row {
+  border: 1px solid #563D7C;
+  margin: 8px 18px;
+  font-size: 1.2rem;
+  width: calc(100% - 2 * 18px);
+}
+.trees-row__name-a {
+  font-size: 1.2rem !important;
+  margin-left: 4px;
+}
+.trees-row__name-box {
+  display: inline-block;
+  width: calc(100% - 2 * 136px - 2 * 17px);
+}
+.trees-row__btn {
+  width: 136px;
+  margin: 4px;
+}
+
+
+/* tree page */
+.tree__row {
+  margin: 0px 18px;
+}
+
+
+/* tree-edit page */
+.tree-edit__btn-box {
+  margin: 120px 0px 0px 0px;
+}
+
+
+/* articles page, person-info page */
+.scraping-data {
+  text-align: justify;
+  margin: 0px 40px 80px 40px;
+  font-size: 1.1rem;
+}
+
+
+/* colors */
+[data-type="edit"] {
+  background: #28A745; /* green */
+}
+[data-type="del"] {
+  background: #DC3545; /* red */
+}
+[data-type="info"] {
+  background: #7D7D7D; /* grey */
+}

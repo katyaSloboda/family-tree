@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/public/js/trees.js"></script>
+  <title>Список дерев</title>
+</head>
+<body>
+  <% include blocks/header.ejs %>
+  <div>
+    <h1>Список родинних дерев</h1>
+    <a href="/" role="button">
+      <div class="btn btn--big btn-div--big">Створити нове</div>
+    </a>
+
+    <% for(var i = 0; i < items.length; i++) { %>
+      <div class="trees__row">
+        <div class="trees-row__name-box">
+          <a class="trees-row__name-a" href="/tree/<%= items[i]._id %>">
+            <%= (i + 1) %>. <%= items[i].name %>
+          </a>
+        </div>
+        <a href="/edit-tree/<%= items[i]._id %>" role="button">
+          <div class="btn btn-div trees-row__btn" data-type="edit">Редагувати</div>
+        </a>
+        <button class="btn trees-row__btn" data-type="del" id="btn-del-<%= items[i]._id %>" onclick="deleteTree('<%= items[i]._id %>')">
+          Видалити
+        </button>
+      </div>
+    <% } %>
+  </div>
+</body>
+</html>

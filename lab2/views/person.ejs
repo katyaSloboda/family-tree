@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/css/style.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script type="text/javascript" src="/public/js/person.js"></script>
+  <title>Член родини</title>
+</head>
+<body>
+  <% include blocks/header.ejs %>
+  <div>
+    <h1>Редагування даних про члена родини</h1>
+    <form method="post" action="/edit-person/<%= person._id %>">
+      <input type="hidden" name="treeId" value="<%= person.treeId %>">
+
+      <div class="person-form__box">
+          <!-- first name -->
+          <div class="box__person-prop-box">
+            <label class="person-prop-box__label">Ім'я: </label></td>
+            <input class="person-prop-box__input" type="text" name="firstName" placeholder="Іван" value="<%= person.firstName %>">
+          </div>
+          <!-- last name -->
+          <div class="box__person-prop-box">
+            <label class="person-prop-box__label">Прізвище: </label></td>
+            <input class="person-prop-box__input" type="text" name="lastName" placeholder="Іванов" value="<%= person.lastName %>">
+          </div>
+          <!-- middle name -->
+          <div class="box__person-prop-box">
+            <label class="person-prop-box__label">По батькові: </label>
+            <input class="person-prop-box__input" type="text" name="middleName" placeholder="Іванович" value="<%= person.middleName %>">
+          </div>
+          <!-- gender -->
+          <div class="box__person-prop-box">
+            <label class="person-prop-box__label">Стать: </label>
+            <select class="person-prop-box__select" class="selectpicker" name="gender">
+              <optgroup>
+                <% if (!person.gender || person.gender == "0") { %>
+                  <option value="0" selected>Чоловіча</option>
+                  <option value="1">Жіноча</option>
+                <% } else { %>
+                  <option value="0">Чоловіча</option>
+                  <option value="1" selected>Жіноча</option>
+                <% } %>
+              </optgroup>
+            </select>
+          </div>
+      </div>
+
+      <div class="person-form__box">
+          <!-- date of birth -->
+          <div class="box__person-prop-box">
+            <label class="person-prop-box__label">Дата народження: </label>
+            <input class="person-prop-box__input" type="date" name="dateOfBirth" value="<%= person.dateOfBirth %>">
+          </div>
+          <!-- date of death -->
+          <div class="box__person-prop-box">
+            <label class="person-prop-box__label">Дата смерті: </label>
+            <input class="person-prop-box__input" type="date" name="dateOfDeath" value="<%= person.dateOfDeath %>">
+          </div>
+          <!-- mother -->
+          <div class="box__person-prop-box">
+            <label class="person-prop-box__label">Мати: </label>
+            <select class="person-prop-box__select" class="selectpicker" name="motherId">
+              <optgroup>
+                <% for(var i = 0; i < women.length; i++) { %>
+                  <% if (person.motherId == women[i]._id) { %>
+                    <option value="<%= women[i]._id %>" selected><%= (women[i].firstName || '') + ' ' + (women[i].middleName || '') + ' ' + (women[i].lastName || '') + ' ' + (women[i].dateOfBirth || '') %></option>
+                  <% } else { %>
+                    <option value="<%= women[i]._id %>"><%= (women[i].firstName || '') + ' ' + (women[i].middleName || '') + ' ' + (women[i].lastName || '') + ' ' + (women[i].dateOfBirth || '') %></option>
+                  <% } %>
+                <% } %>
+              </optgroup>
+            </select>
+          </div>
+          <!-- father -->
+          <div class="box__person-prop-box">
+            <label class="person-prop-box__label">Батько: </label>
+            <select class="person-prop-box__select" class="selectpicker" name="fatherId">
+              <optgroup>
+                <% for(var i = 0; i < men.length; i++) { %>
+                  <% if (person.fatherId == men[i]._id) { %>
+                    <option value="<%= men[i]._id %>" selected><%= (men[i].firstName || '') + ' ' + (men[i].middleName || '') + ' ' + (men[i].lastName || '') + ' ' + (men[i].dateOfBirth || '') %></option>
+                  <% } else { %>
+                    <option value="<%= men[i]._id %>"><%= (men[i].firstName || '') + ' ' + (men[i].middleName || '') + ' ' + (men[i].lastName || '') + ' ' + (men[i].dateOfBirth || '') %></option>
+                  <% } %>
+                <% } %>
+              </optgroup>
+            </select>
+          </div>
+      </div>
+
+      <!-- buttons -->
+      <div class="person-form__btn-box">
+        <button type="submit" class="btn" data-type="edit">Зберегти</button>
+        <a href="/tree/<%= person.treeId %>" role="button" id="cancelbtn">
+          <div class="btn btn-div margin-left--10px">Скасувати</div>
+        </a>
+      </div>
+      <% if(person._id != 0) { %>
+        <div>
+          <a href="/delete-person/<%= person._id %>/<%= person.treeId %>" role="button" id="deletebtn">
+            <div class="btn btn-div" data-type="del">Видалити</div>
+          </a>
+          <a href="/get-person-info/<%= person._id %>" role="button">
+            <div class="btn btn-div btn-info margin-left--10px" data-type="info">Інформація про людину</div>
+          </a>
+        </div>
+      <% } %>
+
+    </form>
+  </div>
+</body>
+</html>

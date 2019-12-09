@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/css/style.css">
+  <title>Родинне дерево</title>
+</head>
+<body>
+  <% include blocks/header.ejs %>
+  <div class="text-align--center create-tree">
+    <figure class="create-tree__img-box">
+      <img class="create-tree__img" src="./public/images/grayscale-photo-of-baby-feet-with-father-and-mother-hands-in-733881.jpg">
+    </figure>
+    <div class="create-tree__box">
+      <h1 class="create-tree__title">Створіть своє родинне дерево!</h1>
+      <form class="create-tree__form" method="post" action="/">
+        <div>
+          <label for="nameInput" >Введіть назву дерева:</label>
+          <input type="text" name="name" id="nameInput" placeholder="Іванови">
+        </div>
+        <button type="submit" class="btn">Створити</button>
+      </form>
+    </div>
+  </div>
+</body>
+</html>

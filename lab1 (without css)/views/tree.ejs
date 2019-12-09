@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Дерево</title>
+</head>
+<body bgcolor="#FFFFFE" link="#646267" text="#504D50" topmargin="0" leftmargin="0">
+  <% include blocks/header.ejs %>
+  <h1 align="center"><font size="6">Дерево <%= "\"" + tree.name + "\"" %></font></h1>
+  <a align="left" href="/person/0?treeId=<%= tree._id %>" role="button">
+    <table height="30px" cellpadding="8px">
+      <tr><td bgcolor="#563D7C"><font size="4" color="FFFFFE">Додати людину</font></td></tr>
+    </table>
+  </a>
+  <br/>
+  <br/>
+  <% for(var i = 0; i < persons.length; i++) { %>
+    <a href="/person/<%= persons[i]._id %>?treeId=<%= tree._id %>" align="left">
+      <font size="4"><%= (i + 1) %>. <%= `${persons[i].firstName} ${persons[i].middleName} ${persons[i].lastName} ${persons[i].dateOfBirth}` %></font>
+    </a>
+    <br>
+  <% } %>
+</body>
+</html>

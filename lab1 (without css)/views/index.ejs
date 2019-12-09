@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Родинне дерево</title>
+</head>
+<body bgcolor="#FFFFFE" link="#646267" text="#504D50" topmargin="0" leftmargin="0">
+  <% include blocks/header.ejs %>
+  <div align="center">
+    <img src="./public/images/mehrerleben.jpeg">
+    <br/>
+    <br/>
+    <h1><font size="6">Створіть своє родинне дерево!</font></h1>
+    <br/>
+    <form method="post" action="/">
+      <div>
+        <label for="nameInput"><font size="5">Введіть назву дерева:</font></label>
+        <input type="text" name="name" id="nameInput" placeholder="Іванови"></input>
+      </div>
+      <br/>
+      <button type="submit"><font size="3">Створити</font></button>
+    </form>
+  </div>
+</body>
+</html>

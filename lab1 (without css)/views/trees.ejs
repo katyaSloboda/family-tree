@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Список дерев</title>
+</head>
+<body bgcolor="#FFFFFE" link="#646267" text="#504D50" topmargin="0" leftmargin="0">
+  <% include blocks/header.ejs %>
+  <h1 align="center"><font size="6">Список родинних дерев</font></h1>
+  <br/>
+  <br/>
+  <a align="left" href="/" role="button">
+    <table height="30px" cellpadding="8px">
+      <tr><td bgcolor="#563D7C"><font size="4" color="FFFFFE">Створити нове</font></td></tr>
+    </table>
+  </a>
+  <br/>
+  <br/>
+  <table border="1" cellpadding="10" bordercolor="#646267" rules="rows">
+    <% for(var i = 0; i < items.length; i++) { %>
+      <form method="post" action="/delete-tree/<%= items[i]._id %>" align="left">
+        <tr align="left">
+          <td>
+            <a href="/tree/<%= items[i]._id %>"><font size="4"><%= (i + 1) %>. <%= items[i].name %></font></a>
+          </td>
+          <td>
+            <a href="/edit-tree/<%= items[i]._id %>" role="button"><font size="4">Редагувати</font></a>
+          </td>
+          <td>
+            <button type="submit"><font size="3">Видалити</font></button>
+          </td>
+        </tr>
+      </form>
+    <% } %>
+  </table>
+</body>
+</html>
