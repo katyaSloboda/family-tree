@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/css/style.css">
+  <title>Редагування дерева</title>
+</head>
+<body>
+  <% include blocks/header.ejs %>
+  <div class="text-align--center">
+    <h1>Редагування родинного дерева</h1>
+    <form method="post" action="/edit-tree/<%= tree.id %>">
+      <div>
+        <label for="treeInput">Введіть нову назву для дерева:</label>
+        <input type="text" name="name" id="treeInput" placeholder="Іванови" value="<%= tree.name %>">
+      </div>
+      <div class="tree-edit__btn-box">
+          <button type="submit" class="btn btn--big" data-type="edit">Зберегти</button>
+          <a href="/trees" role="button">
+            <div class="btn btn--big btn-div--big">Скасувати</div>
+          </a>
+      </div>
+    </form>
+  </div>
+</body>
+</html>

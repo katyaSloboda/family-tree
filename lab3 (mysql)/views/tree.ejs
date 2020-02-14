@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/public/css/style.css">
+  <title>Дерево</title>
+</head>
+<body>
+  <% include blocks/header.ejs %>
+  <div>
+    <h1>Дерево <%= "\"" + tree.name + "\"" %></h1>
+    <a href="/person/0?treeId=<%= tree.id %>" role="button">
+      <div class="btn btn--big btn-div--big">Додати людину</div>
+    </a>
+    <br>
+    <br>
+
+    <% for(var i = 0; i < persons.length; i++) { %>
+      <a href="/person/<%= persons[i].id %>?treeId=<%= tree.id %>" class="tree__row">
+        <%= (i + 1) %>. <%= `${persons[i].firstName} ${persons[i].middleName} ${persons[i].lastName} ${persons[i].dateOfBirth}` %>
+      </a>
+      <br>
+    <% } %>
+  </div>
+</body>
+</html>
